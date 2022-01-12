@@ -1,8 +1,6 @@
 %{
-    extern "C" int yylex();
-    using namespace std;
-    #include <iostream>
     #include "parser.tab.c"
+    extern "C" int yylex();
 %}
 
 %%
