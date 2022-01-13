@@ -6,6 +6,8 @@
     #include "parser.cpp"
 %}
 
+%option noyywrap
+
 %%
 
 [0-9]+        { yylval.intVal = atoi(yytext); return INTEGER_LITERAL; }
@@ -16,9 +18,3 @@
 "/"           { return DIV; }
 ";"           { return SEMI; }
 [\t\r\n\f]   ; /* ignore whitespace */
-
-%%
-
-int yywrap(){ 
-    return 1;
-}
