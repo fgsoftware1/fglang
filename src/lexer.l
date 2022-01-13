@@ -1,5 +1,9 @@
 %{
-    #include "parser.c"
+    extern "C" {
+        int yylex();
+    }
+
+    #include "parser.cpp"
 %}
 
 %option noyywrap
