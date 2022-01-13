@@ -3,7 +3,6 @@
 %}
 
 %option noyywrap
-%option yylineno
 
 %%
 
