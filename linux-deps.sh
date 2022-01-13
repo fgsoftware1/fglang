@@ -1,2 +1,2 @@
 #! /bin/bash
-apt-get install bison flex g++ ninja-build 
+apt-get install bison flex g++ g++-multilib
