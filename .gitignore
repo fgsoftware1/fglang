@@ -1,3 +1,3 @@
 lex.yy.c
-parser.c
 fgl
+parser.cpp
