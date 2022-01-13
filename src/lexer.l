@@ -1,6 +1,5 @@
 %{
-    #include "parser.tab.c"
-    extern "C" int yylex();
+    #include "parser.c"
 %}
 
 %%
@@ -12,4 +11,11 @@
 "*"           { return MULT; }
 "/"           { return DIV; }
 ";"           { return SEMI; }
-[ \t\r\n\f]   ; /* ignore whitespace */
+[\t\r\n\f]   ; /* ignore whitespace */
+
+%%
+
+int yywrap(void)
+{
+    return 0;
+}
