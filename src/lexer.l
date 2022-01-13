@@ -2,8 +2,8 @@
     extern "C" {
         int yylex();
     }
-    
-    #include "parser.c"
+
+    #include "parser.cpp"
 %}
 
 %%
