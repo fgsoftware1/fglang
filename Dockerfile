@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends sudo git ca-cer
 USER root
 CMD /bin/bash
 RUN cd /home/admin/Desktop/projects/ &&\
-    git clone --depth=1 https://github.com/fgsoftware1/fglanguage.git &&\
+    git clone --depth 1 https://github.com/fgsoftware1/fglanguage.git &&\
     cd fglanguage &&\
     apt-get update &&\
     sudo bash linux-deps.sh
