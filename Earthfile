@@ -1,4 +1,4 @@
-FROM: ubuntu:20.04
+FROM: ubuntu:impish-20211015
 
 docker:
     VOLUME /home/admin/Desktop/projects
