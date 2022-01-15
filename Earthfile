@@ -4,7 +4,7 @@ all:
     BUILD +build
     
 build:
-    COPY src/* ./src
+    COPY ./src/* ./src
     RUN cd src
     RUN bash linux-deps.sh
     RUN bash build.sh
