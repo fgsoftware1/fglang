@@ -12,6 +12,7 @@ docker:
     COPY ./ /home/admin/Desktop/projects/fglanguage/
     RUN cd /home/admin/Desktop/projects/fglanguage/ && \
         sudo bash build.sh
+    SAVE IMAGE fgygh/fglanguage:latest
 
 build:
     COPY ./* ./fglanguage/
