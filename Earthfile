@@ -11,7 +11,7 @@ docker:
     CMD /bin/bash
     COPY ./ /home/admin/Desktop/projects/fglanguage/
     RUN cd /home/admin/Desktop/projects/fglanguage/ && \
-        sudo bash linux-build.sh && \
+        sudo bash build.sh && \
         sudo bash build.sh
 
 build:
