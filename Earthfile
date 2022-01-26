@@ -1,6 +1,6 @@
-docker:
-    FROM ubuntu:impish-20211015
+FROM ubuntu:impish-20211015
 
+docker:
     VOLUME /home/admin/Desktop/projects
     WORKDIR /home/admin/Desktop/projects
 
@@ -15,7 +15,7 @@ docker:
         sudo bash build.sh
 
 build:
-    COPY ./src/* ./src
+    COPY ./* ./fglanguage/
     RUN cd src
     RUN bash linux-deps.sh
     RUN bash build.sh
