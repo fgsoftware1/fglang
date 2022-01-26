@@ -4,12 +4,12 @@ WORKDIR /fglanguage
 
 build:
     COPY src/* .
-    RUN bison parser.y -o parser.c
-    RUN flex src/lexer.l
-    RUN g++ lex.yy.c -o fgl
-    COPY parser.c build/
-    COPY lex.yy.c build/
-    COPY fgl build/
+    RUN bison ./parser.y -o ./parser.c
+    RUN flex ./lexer.l
+    RUN g++ ./lex.yy.c -o ./fgl
+    COPY ./parser.c ./build/
+    COPY ./lex.yy.c ./build/
+    COPY ./fgl build/
     SAVE ARTIFACT build/fgl /fgl AS LOCAL build/fgl
 docker:
     COPY +build/fgl .
