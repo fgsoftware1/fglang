@@ -17,5 +17,7 @@ docker:
     SAVE IMAGE fgygh/fglanguage:latest
 
 build:
+    RUN apt-get update && \
+        apt-get install -y sudo --no-install-recommends
     RUN sudo bash linux-deps.sh && \
         bash build.sh
