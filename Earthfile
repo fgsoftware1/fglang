@@ -15,6 +15,6 @@ docker:
     SAVE IMAGE fgygh/fglanguage:latest
 
 build:
-    RUN cd src
-    RUN bash linux-deps.sh
-    RUN bash build.sh
+    RUN cd ./fglanguage/ && \
+        sudo bash linux-deps.sh && \
+        bash build.sh
