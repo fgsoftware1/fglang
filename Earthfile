@@ -1,15 +1,17 @@
+VERSION 0.6
 FROM ubuntu:impish-20211015
+WORKDIR /fglanguage
 
-VOLUME /home/admin/Desktop/projects
-WORKDIR /home/admin/Desktop/projects
-
+build:
+    COPY src/* .
+    RUN bison parser.y -o parser.c
+    RUN flex src/lexer.l
+    RUN g++ lex.yy.c -o fgl
+    COPY parser.c build/
+    COPY lex.yy.c build/
+    COPY fgl build/
+    SAVE ARTIFACT build/fgl /fgl AS LOCAL build/fgl
 docker:
-    RUN apt-get update && \
-        apt-get install -y git g++ g++-multilib sudo bison flex --no-install-recommends && \
-        useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-    USER root
-    CMD /bin/bash
-    COPY ./ /home/admin/Desktop/projects/fglanguage/
-    RUN cd /home/admin/Desktop/projects/fglanguage/ && \
-        sudo bash build.sh
+    COPY +build/fgl .
+    ENTRYPOINT ["/fglanguage/fgl"]
     SAVE IMAGE fgygh/fglanguage:latest
