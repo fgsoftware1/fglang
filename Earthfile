@@ -1,9 +1,9 @@
 FROM ubuntu:impish-20211015
 
-docker:
-    VOLUME /home/admin/Desktop/projects
-    WORKDIR /home/admin/Desktop/projects
+VOLUME /home/admin/Desktop/projects
+WORKDIR /home/admin/Desktop/projects
 
+docker:
     RUN apt-get update && \
         apt-get install -y git g++ g++-multilib sudo bison flex --no-install-recommends && \
         useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
