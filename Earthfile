@@ -1,6 +1,6 @@
-FROM: ubuntu:impish-20211015
-
 docker:
+    FROM: ubuntu:impish-20211015
+    
     VOLUME /home/admin/Desktop/projects
     WORKDIR /home/admin/Desktop/projects
 
