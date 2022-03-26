@@ -12,7 +12,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
 USER root
 CMD /bin/bash
 RUN cd /home/admin/Desktop/projects/ &&\
-    git clone --depth 1 https://github.com/fgsoftware1/fglanguage.git &&\
     cd fglanguage &&\
     apt-get update &&\
     sudo bash linux-deps.sh
