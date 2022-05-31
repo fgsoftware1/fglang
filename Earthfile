@@ -1,21 +1,17 @@
-FROM: ubuntu:impish-20211015
-
-docker:
-    VOLUME /home/admin/Desktop/projects
-    WORKDIR /home/admin/Desktop/projects
-
-    RUN apt-get update && \
-        apt-get install -y git g++ g++-multilib sudo --no-install-recommends && \
-        useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-    USER root
-    CMD /bin/bash
-    COPY ./ /home/admin/Desktop/projects/fglanguage/
-    RUN cd /home/admin/Desktop/projects/fglanguage/ && \
-        sudo bash linux-build.sh && \
-        sudo bash build.sh
+VERSION 0.6
+FROM ubuntu:impish-20211015
+WORKDIR /fglanguage
 
 build:
-    COPY ./src/* ./src
-    RUN cd src
-    RUN bash linux-deps.sh
-    RUN bash build.sh
+    COPY src/* .
+    RUN bison ./parser.y -o ./parser.c
+    RUN flex ./lexer.l
+    RUN g++ ./lex.yy.c -o ./fgl
+    COPY ./parser.c ./build/
+    COPY ./lex.yy.c ./build/
+    COPY ./fgl build/
+    SAVE ARTIFACT build/fgl /fgl AS LOCAL build/fgl
+docker:
+    COPY +build/fgl .
+    ENTRYPOINT ["/fglanguage/fgl"]
+    SAVE IMAGE fgygh/fglanguage:latest
