@@ -1,20 +1,25 @@
 name: CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+    workflow_dispatch:
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-        - uses: actions/checkout@v2
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
 
-        - name: deps
-          run: sudo bash linux-deps.sh
-        - name: build
-          run: sudo bash build.sh
-        - name: test
-          run: ./fgl ./tests/test.fgl
+            - name: deps
+              run: sudo bash linux-deps.sh
+            - name: build
+              run: sudo bash build.sh
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: tets math
+              run: ./fgl ./tests/math.fgl
