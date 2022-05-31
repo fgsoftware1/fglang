@@ -1,4 +1,4 @@
 lex.yy.c
 fgl
-parser.cpp
+parser.c
 .dccache

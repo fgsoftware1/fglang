@@ -20,12 +20,15 @@
 %token <intVal> INTEGER_LITERAL
 %token <floatVal> FLOAT_LITERAL
 %token SEMI
+
 %type <floatVal> exp
 %type <floatVal> statement
+
 %left PLUS MINUS
 %left MULT DIV
 
  %%
+
     program:
         | program statement { cout << "Result: " << $2 << endl; }
         ;
@@ -45,7 +48,7 @@
 
 int main(int argc, char **argv) {
     if (argc < 2) {
-        cout << "Provide a filename to parse!" << endl;
+        cout << "Provide a file to parse!" << endl;
         exit(1);
     }
 
