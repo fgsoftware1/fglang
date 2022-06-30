@@ -8,12 +8,10 @@ WORKDIR /home/admin/Desktop/projects
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &&\
     echo $TZ > /etc/timezone &&\
     apt-get update && apt-get install -y --no-install-recommends apt-utils &&\
-    apt-get install -y --no-install-recommends sudo git ca-certificates wget &&\
-    useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-USER root
+    bash linux-deps.sh
+
 CMD /bin/bash
-RUN cd /home/admin/Desktop/projects/ &&\
-    git clone --depth 1 https://github.com/fgsoftware1/fglanguage.git &&\
-    cd fglanguage &&\
+RUN cd /home/admin/Desktop/projects/fglanguage &&\
     apt-get update &&\
-    sudo bash linux-deps.sh
+    sudo bash linux-deps.sh &&\
+    bash build.sh
