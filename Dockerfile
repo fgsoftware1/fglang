@@ -7,8 +7,7 @@ WORKDIR /home/admin/Desktop/projects
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &&\
     echo $TZ > /etc/timezone &&\
-    apt-get update && apt-get install -y --no-install-recommends apt-utils &&\
-    bash linux-deps.sh
+    apt-get update && apt-get install -y --no-install-recommends apt-utils
 
 CMD /bin/bash
 RUN cd /home/admin/Desktop/projects/fglanguage &&\
