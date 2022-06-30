@@ -12,8 +12,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &&\
     useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 USER root
 CMD /bin/bash
-RUN cd /home/admin/Desktop/projects/ &&\
-    git clone --depth 1 https://github.com/fgsoftware1/fglanguage.git &&\
-    cd fglanguage &&\
+RUN cd fglanguage &&\
     apt-get update &&\
     sudo bash linux-deps.sh
