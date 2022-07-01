@@ -20,17 +20,22 @@
 %token <intVal> INTEGER_LITERAL
 %token <floatVal> FLOAT_LITERAL
 %token SEMI
+%token LP RP LB RB LBRACKET RBRACKET
+%token IF ELSE ELSEIF
+
 %type <floatVal> exp
-%type <floatVal> statement
+%type <floatVal> op
+
 %left PLUS MINUS
 %left MULT DIV
 
- %%
+%%
+
     program:
-        | program statement { cout << "Result: " << $2 << endl; }
+        | program op { cout << "Result: " << $2 << endl; }
         ;
 
-    statement: exp SEMI
+    op: exp SEMI
 
     exp:
         INTEGER_LITERAL { $$ = $1; }
@@ -45,7 +50,7 @@
 
 int main(int argc, char **argv) {
     if (argc < 2) {
-        cout << "Provide a filename to parse!" << endl;
+        cout << "Provide a file to parse!" << endl;
         exit(1);
     }
 
@@ -57,6 +62,7 @@ int main(int argc, char **argv) {
     }
 
     yyin = sourceFile;
+
     yyparse();
 }
 
