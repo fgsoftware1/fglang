@@ -1,5 +1,5 @@
 %{
-    #include "parser.cpp"
+    #include "parser.c"
 %}
 
 %option noyywrap
