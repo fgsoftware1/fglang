@@ -2,10 +2,12 @@ name: Publish Docker image
 on:
   workflow_dispatch:
   push:
+    branches:
+      - "!master"
     paths:
-      - 'Dockerfile'
-      - '.dockerignore'
-      - '.github/workflows/docker-publish.yml'
+    - 'Dockerfile'
+    - '.dockerignore'
+    - '.github/workflows/docker-publish.yml'
 jobs:
     push_to_registries:
         runs-on: ubuntu-latest
