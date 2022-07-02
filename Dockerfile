@@ -1,17 +1,10 @@
-FROM ubuntu:21.10
+FROM ubuntu:latest
 
-ENV TZ=Europe/Lisbon
+RUN apt-get update && apt-get install -y apt-utils && apt-get install -y --no-install-recommends bash bison flex g++
 
-VOLUME /home/admin/Desktop/projects
-WORKDIR /home/admin/Desktop/projects
+VOLUME /fglang
+WORKDIR /fglang
+COPY . .
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime &&\
-    echo $TZ > /etc/timezone &&\
-    apt-get update && apt-get install -y --no-install-recommends apt-utils &&\
-    apt-get install -y --no-install-recommends sudo git ca-certificates wget &&\
-    useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-USER root
 CMD /bin/bash
-RUN cd fglanguage &&\
-    apt-get update &&\
-    sudo bash linux-deps.sh
+RUN ls && bash build.sh
