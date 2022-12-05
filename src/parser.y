@@ -4,7 +4,7 @@
 
 	#include "functions.h"
 	#include "validators.h"
-	
+
 	extern char Data_Type[50];
 
 	extern void yyerror();
@@ -156,6 +156,6 @@ DATA_TYPE_LIST      : DATA_TYPE
 
 int main(){
 	yyparse();
-	printf("No Errors!!\n");
+	printf("No Errors!\n");
 	return 0;
 }
