@@ -2,9 +2,9 @@
 	#include <stdio.h>
 	#include <string.h>
 
-	#include "include/functions.h"
-	#include "include/validators.h"
-
+	#include "functions.h"
+	#include "validators.h"
+	
 	extern char Data_Type[50];
 
 	extern void yyerror();
@@ -37,8 +37,8 @@
 	char charVal;
 }
 
-%token	COMMA SINGLE_QUOTES SC EQUALS
-%token 	BO BC   CBO CBC BBO BBC
+%token	COMMA SQ SC EQUALS
+%token 	BO BC CBO CBC BBO BBC
 
 %token <charVal>  CHARACTER_VALUE
 %token <intVal>   INTEGER_VALUE
@@ -155,7 +155,7 @@ DATA_TYPE_LIST      : DATA_TYPE
 %%
 
 int main(){
-  yyparse();
-  printf("No Errors!!\n");
-  return 0;
+	yyparse();
+	printf("No Errors!!\n");
+	return 0;
 }

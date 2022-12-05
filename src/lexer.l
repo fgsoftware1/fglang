@@ -2,7 +2,7 @@
     #include <string.h>
     #include <stdlib.h>
 
-    #include "y.tab.h"
+    #include "parser.tab.h"
 
     void extern yyerror(char*);
     void InvalidToken();

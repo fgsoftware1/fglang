@@ -1,4 +1,4 @@
 #! /bin/bash
-bison ./src/parser.y
-flex  ./src/lexer.l
-cc lex.yy.c y.tab.c -o fgl
+yacc -d src/parser.y
+lex src/lexer.l
+cc lex.yy.c parser.tab.c -o fgl
