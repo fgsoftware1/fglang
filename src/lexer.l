@@ -1,7 +1,8 @@
 %{
     #include <string.h>
     #include <stdlib.h>
-    #include "parser.cpp"
+
+    #include "parser.h"
 
     void extern yyerror(char*);
     void InvalidToken();
