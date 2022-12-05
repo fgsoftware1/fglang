@@ -1,6 +1,6 @@
 #include <string.h>
 
-#include "../parser.h"
+#include "../y.tab.h"
 
 extern int strcmp(const char*,const char*); 
 
